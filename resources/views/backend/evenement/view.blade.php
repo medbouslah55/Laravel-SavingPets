@@ -6,11 +6,11 @@
         <div class="page-header">
             <div class="row">
                 <div class="col-sm-6">
-                    <h3> All locaux</h3>
+                    <h3> All Events</h3>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li class="breadcrumb-item">Gestion des locaux</li>
-                        <li class="breadcrumb-item">All locaux</li>
+                        <li class="breadcrumb-item">Gestion des Evenements</li>
+                        <li class="breadcrumb-item">All Events</li>
                         <!-- <li class="breadcrumb-item active">Basic Tables</li> -->
                     </ol>
                 </div>
@@ -42,32 +42,39 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5>Locaux</h5>
+                        <h5>Events</h5>
                     </div>
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th scope="col">Nom du centre</th>
-                                    <th scope="col">Adresse du centre</th>
-                                    <th scope="col">Nom du Responsable</th>
-                                    <th scope="col">Numero telephone</th>
+                                    <th scope="col">Adresse de l'Evenement</th>
+                                    <th scope="col">Date de Debut</th>
+                                    <th scope="col">Date de Fin</th>
+                                    <th scope="col">Capacite</th>
+                                    <th scope="col">TypeAnimaux</th>
+                                    <th scope="col">Centre</th>
                                     <th scope="col">Update</th>
                                     <th scope="col">Delete </th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <!-- On parcourt la collection de Post -->
-                                @foreach ($locals as $local)
+                                @foreach ($evenements as $evenement)
                                 <tr>
-                                    <td>{{ $local->NomCentre }}</td>
-                                    <td>{{ $local->Adresse }}</td>
-                                    <td>{{ $local->NomResponsable }}</td>
-                                    <td>{{ $local->Telephone }}</td>
-                                    <td> <a class="btn btn-warning" href="{{ route('local.edit', $local) }}" title="Modifier le centre">Update</a>
+                                    <td>{{ $evenement->AdresseEvenement }}</td>
+                                    <td>{{ $evenement->DateDebut }}</td>
+                                    <td>{{ $evenement->DateFin }}</td>
+                                    <td>{{ $evenement->Capacite }}</td>
+                                    <td>{{ $evenement->TypeAnimaux }}</td>
+                                    @php
+                                    $local = App\Http\Controllers\EvenementController::eventLocal($evenement->local_id);
+                                    @endphp
+                                    <td>{{$local }}</td>
+                                    <td> <a class="btn btn-warning" href="{{ route('evenement.edit', $evenement) }}" title="Modifier le centre">Update</a>
                                     </td>
                                     <td>
-                                        <form method="POST" action="{{ route('local.destroy', $local) }}">
+                                        <form method="POST" action="{{ route('evenement.destroy', $evenement) }}">
                                             <!-- CSRF token -->
                                             @csrf
                                             <!-- <input type="hidden" name="_method" value="DELETE"> -->

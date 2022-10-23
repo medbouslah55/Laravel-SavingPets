@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\UserController;
+use App\Http\Controllers\EvenementController;
 use App\Http\Controllers\LocalController;
 
 
@@ -50,3 +51,4 @@ Route::prefix('user')->group(function () {
 
 // });
 Route::resource("local", LocalController::class);
+Route::resource("evenement", EvenementController::class);

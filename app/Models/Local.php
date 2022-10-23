@@ -9,4 +9,9 @@ class Local extends Model
 {
     use HasFactory;
     protected $fillable = ["NomCentre", "Adresse", "NomResponsable", "Telephone"];
+
+    public function evenements()
+    {
+        return $this->hasMany(Evenement::class);
+    }
 }

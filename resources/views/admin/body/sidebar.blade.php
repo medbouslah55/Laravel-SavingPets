@@ -36,6 +36,15 @@
                     <li class="dropdown">
                         <a class="nav-link menu-title" href="javascript:void(0)">
                             <i data-feather="user"></i>
+                            <span>Events Management</span></a>
+                        <ul class="nav-submenu menu-content">
+                            <li><a href="{{ route('evenement.create') }}">Add Event</a></li>
+                            <li><a href="{{ route('evenement.index') }}">Show All Events</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="nav-link menu-title" href="javascript:void(0)">
+                            <i data-feather="user"></i>
                             <span>Pets Management</span>
                         </a>
                         <ul class="nav-submenu menu-content">

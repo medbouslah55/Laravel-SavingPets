@@ -23,6 +23,9 @@ return new class extends Migration
            
 
             $table->timestamps();
+
+            $table->unsignedBigInteger('local_id');
+            $table->foreign('local_id')->references('id')->on('locals');
         });
     }
 
