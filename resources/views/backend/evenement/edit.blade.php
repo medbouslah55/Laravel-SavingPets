@@ -8,12 +8,11 @@
 		<div class="page-header">
 			<div class="row">
 				<div class="col-sm-6">
-					<h3>Default Forms</h3>
+					<h3>Event</h3>
 					<ol class="breadcrumb">
 						<li class="breadcrumb-item"><a href="index.html">Home</a></li>
-						<li class="breadcrumb-item">Forms</li>
-						<li class="breadcrumb-item">Form Widgets</li>
-						<li class="breadcrumb-item active">Default Forms</li>
+						<li class="breadcrumb-item">Event</li>
+						<li class="breadcrumb-item active">Add Event</li>
 					</ol>
 				</div>
 				<div class="col-sm-6">
@@ -73,7 +72,7 @@
 											<label class="col-form-label">Adresse de l'Evenement</label>
 											<input class="form-control" type="text" name="AdresseEvenement" value="{{ isset($evenement->AdresseEvenement) ? $evenement->AdresseEvenement : old('AdresseEvenement') }}" id="AdresseEvenement" placeholder="Adresse de Evenement">
 											@error("AdresseEvenement")
-											<div>{{ $message }}</div>
+											<div class="text-danger">{{ $message }}</div>
 											@enderror
 										</div>
 										<div class="mb-3">
@@ -88,7 +87,7 @@
 											<label class="col-form-label">Date de Debut</label>
 											<input class="form-control" type="date" name="DateDebut" value="{{ isset($evenement->DateDebut) ? $evenement->DateDebut : old('DateDebut') }}" id="DateDebut" placeholder="Date de Debut">
 											@error("DateDebut")
-											<div>{{ $message }}</div>
+											<div class="text-danger">{{ $message }}</div>
 											@enderror
 										</div>
 										<!-- <hr class="mt-4 mb-4">
@@ -97,21 +96,21 @@
 											<label class="col-form-label">Date de Fin</label>
 											<input class="form-control" type="date" name="DateFin" value="{{ isset($evenement->DateFin) ? $evenement->DateFin : old('DateFin') }}" placeholder="Date de Fin">
 											@error("DateFin")
-											<div>{{ $message }}</div>
+											<div class="text-danger">{{ $message }}</div>
 											@enderror
 										</div>
 										<div class="mb-3">
 											<label class="col-form-label">Capacite</label>
 											<input class="form-control" type="Number" name="Capacite" value="{{ isset($evenement->Capacite) ? $evenement->Capacite : old('Capacite') }}" id="Capacite" placeholder="Capacite">
 											@error("Capacite")
-											<div>{{ $message }}</div>
+											<div class="text-danger">{{ $message }}</div>
 											@enderror
 										</div>
 										<div class="mb-3">
 											<label class="col-form-label">Type des Animaux</label>
 											<input class="form-control" type="text" name="TypeAnimaux" value="{{ isset($evenement->TypeAnimaux) ? $evenement->TypeAnimaux : old('TypeAnimaux') }}" id="TypeAnimaux" placeholder="TypeAnimaux">
 											@error("TypeAnimaux")
-											<div>{{ $message }}</div>
+											<div class="text-danger">{{ $message }}</div>
 											@enderror
 										</div>
 										

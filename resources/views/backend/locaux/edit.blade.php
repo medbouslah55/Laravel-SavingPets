@@ -8,12 +8,11 @@
 		<div class="page-header">
 			<div class="row">
 				<div class="col-sm-6">
-					<h3>Default Forms</h3>
+					<h3>Locaux</h3>
 					<ol class="breadcrumb">
 						<li class="breadcrumb-item"><a href="index.html">Home</a></li>
-						<li class="breadcrumb-item">Forms</li>
-						<li class="breadcrumb-item">Form Widgets</li>
-						<li class="breadcrumb-item active">Default Forms</li>
+						<li class="breadcrumb-item">Locaux</li>
+						<li class="breadcrumb-item active">Add Locaux</li>
 					</ol>
 				</div>
 				<div class="col-sm-6">
@@ -73,14 +72,14 @@
 											<label class="col-form-label">Nom du centre</label>
 											<input class="form-control" type="text" name="NomCentre" value="{{ isset($local->NomCentre) ? $local->NomCentre : old('NomCentre') }}" id="NomCentre" placeholder="Nom du Centre">
 											@error("NomCentre")
-											<div>{{ $message }}</div>
+											<div class="text-danger">{{ $message }}</div>
 											@enderror
 										</div>
 										<div class="mb-3">
 											<label class="col-form-label">Adresse du centre</label>
 											<input class="form-control" type="text" name="Adresse" value="{{ isset($local->Adresse) ? $local->Adresse : old('Adresse') }}" id="NomCentre" placeholder="Adresse du Centre">
 											@error("Adresse")
-											<div>{{ $message }}</div>
+											<div class="text-danger">{{ $message }}</div>
 											@enderror
 										</div>
 										<hr class="mt-4 mb-4">
@@ -89,14 +88,14 @@
 											<label class="col-form-label">Nom du Responsable</label>
 											<input class="form-control" type="text" name="NomResponsable" value="{{ isset($local->NomResponsable) ? $local->NomResponsable : old('NomResponsable') }}" placeholder="Nom du Responsable">
 											@error("NomResponsable")
-											<div>{{ $message }}</div>
+											<div class="text-danger">{{ $message }}</div>
 											@enderror
 										</div>
 										<div class="mb-3">
 											<label class="col-form-label">Telephone du centre</label>
 											<input class="form-control" type="Number" name="Telephone" value="{{ isset($local->Telephone) ? $local->Telephone : old('Telephone') }}" id="Telephone" placeholder="Telephone du centre">
 											@error("Telephone")
-											<div>{{ $message }}</div>
+											<div class="text-danger">{{ $message }}</div>
 											@enderror
 										</div>
 										<div class="card-footer">
