@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Evenement;
 use App\Models\Local;
+use Barryvdh\DomPDF\PDF;
 use Illuminate\Http\Request;
+
 
 class EvenementController extends Controller
 {
+    
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +18,7 @@ class EvenementController extends Controller
      */
     public function index()
     {
-        $evenements = Evenement::latest()->get();
+        $evenements = Evenement::latest()->paginate(2);
         return view("backend.evenement.view", compact("evenements"));
     }
 
@@ -158,4 +161,27 @@ class EvenementController extends Controller
          // Redirection route "posts.index"
          return redirect(route('evenement.index'));
     }
+
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+
+    public function indexFilter(Request $request)
+    {
+        $evenements  = Evenement::where('AdresseEvenement', 'LIKE', '%' . $request->search . '%')
+            ->orWhere('DateDebut', 'LIKE', '%' . $request->search . '%')
+            ->orWhere('DateFin', 'LIKE', '%' . $request->search . '%')
+            ->orWhere('Capacite', 'LIKE', '%' . $request->search . '%')
+            ->orWhere('TypeAnimaux', 'LIKE', '%' . $request->search . '%')
+            ->paginate(2);
+
+        if (count($evenements) > 0)
+            return view('backend.evenement.view', compact('evenements'))->withDetails($evenements)->withQuery($request->search);
+        else
+            return view('backend.evenement.view', compact('evenements'))->withMessage('No Event Details found. Try to search again !');
+    }
+  
 }

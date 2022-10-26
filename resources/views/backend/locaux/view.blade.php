@@ -43,6 +43,13 @@
                 <div class="card">
                     <div class="card-header">
                         <h5>Locaux</h5>
+                        <form method="GET" action="../searchLocaux">
+                            @csrf
+                            <div class="search-box">
+                                <input type="text" class="form-control search" name="search" placeholder="Search for...">
+                                <i class="ri-search-line search-icon"></i>
+                            </div>
+                        </form>
                     </div>
                     <div class="table-responsive">
                         <table class="table">
@@ -79,6 +86,10 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        {{-- Pagination --}}
+                        <div class="d-flex justify-content-center ">
+                            {!! $locals->links('pagination::bootstrap-4') !!}
+                        </div>
                     </div>
                 </div>
             </div>

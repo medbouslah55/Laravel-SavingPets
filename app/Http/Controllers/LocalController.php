@@ -14,7 +14,7 @@ class LocalController extends Controller
      */
     public function index()
     {
-        $locals = Local::latest()->get();
+        $locals = Local::latest()->paginate(2);
         return view("backend.locaux.view", compact("locals"));
     }
 
@@ -124,5 +124,25 @@ class LocalController extends Controller
 
         // Redirection route "posts.index"
         return redirect(route('local.index'));
+    }
+
+     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+
+    public function indexFilter(Request $request)
+    {
+        $locals  = Local::where('NomCentre', 'LIKE', '%' . $request->search . '%')
+            ->orWhere('Adresse', 'LIKE', '%' . $request->search . '%')
+            ->orWhere('NomResponsable', 'LIKE', '%' . $request->search . '%')
+            ->orWhere('Telephone', 'LIKE', '%' . $request->search . '%')
+            ->paginate(2);
+
+        if (count($locals) > 0)
+            return view('backend.locaux.view', compact('locals'))->withDetails($locals)->withQuery($request->search);
+        else
+            return view('backend.locaux.view', compact('locals'))->withMessage('No Event Details found. Try to search again !');
     }
 }

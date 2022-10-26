@@ -52,3 +52,6 @@ Route::prefix('user')->group(function () {
 // });
 Route::resource("local", LocalController::class);
 Route::resource("evenement", EvenementController::class);
+
+Route::get('/searchEvenement', 'App\Http\Controllers\EvenementController@indexFilter');
+Route::get('/searchLocaux', 'App\Http\Controllers\LocalController@indexFilter');
